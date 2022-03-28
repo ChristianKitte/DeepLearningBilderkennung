@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Learning - SS 2022</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+    <!-- p5 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/addons/p5.sound.min.js"></script>
+
+    <!-- ml5 -->
+    <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+
+    <link rel="stylesheet" href="main.css">
+
+    <script src="layout.js"></script>
+
+</head>
+
+<body>
+
+<!-- Always shows a header, even in smaller screens. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row portfolio-navigation-row">
+            <!-- Title -->
+            <span class="mdl-layout-title">
+                Einsendeaufgabe 1 - Bilderkennung mit ml5
+            </span>
+
+            <!-- Add spacer, to align navigation to the right -->
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation. We hide it in small screens. -->
+            <nav class="mdl-navigation mdl-layout--large-screen-only">
+                <a class="mdl-navigation__link" href="#"
+                   onclick="show('result'); return false;">
+                    Lösung
+                </a>
+                <a class="mdl-navigation__link" href="#"
+                   onclick="show('documentation'); return false;">
+                    Dokumentation
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">Inhalt</span>
+        <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="#"
+               onclick="show('result'); return false;">
+                <div class="mdc-icon-button__ripple"></div>
+                Lösung
+            </a>
+            <a class="mdl-navigation__link" href="#"
+               onclick="show('documentation'); return false;">
+                Dokumentation
+            </a>
+        </nav>
+    </div>
+
+    <main class="mdl-layout__content">
+        <div class="page-content">
+            <div id="result">
+                <!--<form enctype="multipart/form-data" action="upload.php; return false;" method="post">-->
+                <div class="drag-image">
+                    <h6>Datei hierhin ziehen</h6>
+                    <span>oder</span>
+                    <button title="Öffnet den Datei suchen Dialog">Datei suchen</button>
+                    <input type="file" hidden>
+                </div>
+                <!--</form>-->
+            </div>
+
+            <div id="documentation" class="hidden">
+                <h1>Dokumentation</h1>
+            </div>
+        </div>
+    </main>
+</div>
+<script src="upload.js"></script>
+</body>
+
+</html>
