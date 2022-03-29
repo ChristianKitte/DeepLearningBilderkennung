@@ -21,7 +21,6 @@
     <link rel="stylesheet" href="main.css">
 
     <script src="layout.js"></script>
-
 </head>
 
 <body>
@@ -67,25 +66,43 @@
     </div>
 
     <main class="mdl-layout__content">
-        <div class="page-content">
-            <div id="result">
-                <!--<form enctype="multipart/form-data" action="upload.php; return false;" method="post">-->
-                <div class="drag-image">
-                    <h6>Datei hierhin ziehen</h6>
-                    <span>oder</span>
-                    <button title="Öffnet den Datei suchen Dialog">Datei suchen</button>
-                    <input type="file" hidden>
+        <div id="result">
+            <div class="page-content">
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--6-col">
+                        <!--<form enctype="multipart/form-data" action="upload.php; return false;" method="post">-->
+                        <div class="drag-image">
+                            <h6>Datei hierhin ziehen</h6>
+                            <span>oder</span>
+                            <button title="Öffnet den Datei suchen Dialog">Datei suchen</button>
+                            <input type="file" hidden>
+                        </div>
+                        <!--</form>-->
+                    </div>
+                    <div class="mdl-cell mdl-cell--6-col">
+                        <img class="sample-image" src="files/vogel.jpg">
+                        <img class="sample-image" src="files/vogel.jpg">
+                        <img class="sample-image" src="files/vogel.jpg">
+                        <img class="sample-image" src="files/vogel.jpg">
+                        <img class="sample-image" src="files/vogel.jpg">
+                        <img class="sample-image" src="files/vogel.jpg">
+                    </div>
                 </div>
-                <!--</form>-->
             </div>
+        </div>
 
-            <div id="documentation" class="hidden">
+        <div id="documentation" class="hidden">
+            <div class="page-content">
                 <h1>Dokumentation</h1>
             </div>
         </div>
     </main>
 </div>
-<script src="upload.js"></script>
+
 </body>
+
+<footer>
+    <script src="upload.js"></script>
+</footer>
 
 </html>

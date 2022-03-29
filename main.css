@@ -1,6 +1,6 @@
 .page-content {
-    padding: 0 50px;
-    padding-top: 50px;
+    padding: 0 20px;
+    padding-top: 20px;
 }
 
 #result h1 {
@@ -16,12 +16,10 @@
 }
 
 .drag-image {
-    max-width: 50%;
+    max-width: 75%;
     background-color: bisque;
     border: 1px dashed #fff;
-    height: fit-content;
-    width: fit-content;
-    border-radius: 10px;
+'height: fit-content; 'width: fit-content; border-radius: 10 px;
     font-weight: 400;
     display: flex;
     align-items: center;
@@ -72,4 +70,17 @@
     width: 100%;
     object-fit: cover;
     border-radius: 5px
+}
+
+.sample-image {
+    width: auto;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin: 3px;
+}
+
+ul, li
+{
+    list-style: none;
 }
