@@ -16,55 +16,57 @@ let file;
 // Hier wird die Liste mit den erlaubten Dateien gehalten
 let validExtensions = ["image/jpeg", "image/jpg", "image/png"];
 
-// Button Click Event wird auf Input File gelenkt als Eratz für einen Button
+// Button Click Event wird auf Input File gelenkt als Ersatz für einen Button
 // vom Typ Submit
 button.onclick = () => {
     input.click();
 }
 
-// Input ist ein Eingabefeld für ein File. Unterstützt automatisch den Datei Suchen
+// Input ist ein Eingabefeld für ein File. Unterstützt automatisch den Dateisuchen
 // Dialog und das Ziehen von Dateien
 input.addEventListener("change", function () {
     file = this.files[0];
     dropArea.classList.add("active");
-    viewfile();
+    viewFile();
 });
 
-// Etwas wird über den Drag and Drop Bereich gezogen. Prevent default unterdrück die Default
-// Behandlung
+// Etwas wird über den Drag-and-drop-Bereich gezogen. Prevent default unterdrückt die Defaultbehandlung
 dropArea.addEventListener("dragover", (event) => {
     event.preventDefault();
     dropArea.classList.add("active");
     dragText.textContent = infotext_readyToDrop;
 });
 
-// Etwas verlässt den Drag and Drop Bereich
+// Etwas verlässt den Drag-and-drop-Bereich
 dropArea.addEventListener("dragleave", () => {
     dropArea.classList.remove("active");
     dragText.textContent = infotext_readyToDrag;
 });
 
-// Ein vorher aufgenommenens Objekt im Drag and Drop Bereich losgelassen. Die
+// Ein vorher aufgenommenes Objekt im Drag-and-drop Bereich losgelassen. Die
 // Variable wurde oben angelegt
 dropArea.addEventListener("drop", (event) => {
     event.preventDefault();
 
     file = event.dataTransfer.files[0];
-    viewfile();
+    viewFile();
 });
 
 // Kontrolle, ob der Dateityp korrekt ist. ValidExtension wird oben definiert
-function viewfile() {
+function viewFile() {
     let fileType = file.type;
 
-
-    if (validExtensions.includes(fileType)) {
+    if (validExtensions.includes(fileType) || 1==1) {
         let fileReader = new FileReader();
 
         fileReader.onload = () => {
             let fileURL = fileReader.result;
-            let imgTag = `<img class=".currentImage" src="${fileURL}" alt="Das aktuelle Bild">`;
-            dropArea.innerHTML = imgTag;
+            dropArea.innerHTML = `<img id="x" class=".currentImage" src="${fileURL}" alt="Das aktuelle Bild">`;
+
+            predictImage('file/vogel.jpg');
+        }
+        fileReader.onloadend = () => {
+            //predictImage('file/vogel.jpg');
         }
 
         fileReader.readAsDataURL(file);

@@ -70,14 +70,12 @@
             <div class="page-content">
                 <div class="mdl-grid">
                     <div class="mdl-cell mdl-cell--6-col">
-                        <!--<form enctype="multipart/form-data" action="upload.php; return false;" method="post">-->
                         <div class="drag-image">
                             <h6>Datei hierhin ziehen</h6>
                             <span>oder</span>
                             <button title="Öffnet den Datei suchen Dialog">Datei suchen</button>
-                            <input type="file" hidden>
+                            <input id="targetFile" type="file" hidden>
                         </div>
-                        <!--</form>-->
                     </div>
                     <div class="mdl-cell mdl-cell--6-col">
                         <img class="sample-image" src="files/vogel.jpg">
@@ -103,6 +101,7 @@
 
 <footer>
     <script src="upload.js"></script>
+    <script src="ml.js"></script>
 </footer>
 
 </html>

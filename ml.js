@@ -1,35 +1,33 @@
-let mobileNetModel;
-var predictionImage;
+const imageClassifierModellName = 'MobileNet';
 
-function writeVersion() {
-    document.writeln('Version der Lib ist : ' + ml5.version);
+let imageClassifierModell;
+
+//var image;
+
+function preload() {
+    imageClassifierModell = ml5.imageClassifier(imageClassifierModellName);
 }
 
-function modelReady() {
-    document.writeln("Modell ist bereit...")
-}
+function predictImage(pathToImage) {
+    //let img = loadImage(pathToImage);
+    let img=document.getElementById('x');
 
-function imageReady() {
-    document.writeln("Image ist geladen...")
+    //let predictionImage = createImg(pathToImage, 'Bild zur Vorhersage');
+    //predictionImage.hide();
+    //image(predictionImage, 0, 0);
+    imageClassifierModell.classify(img, gotResult);
 }
 
 function setup() {
-    writeVersion();
-
     createCanvas(400, 400);
-    
-    mobileNetModel = ml5.imageClassifier('MobileNet', modelReady);
-    predictionImage = createImg("vogel.jpg", imageReady());
-    
+    background(0);
+
+    //mobileNetModel = ml5.imageClassifier('MobileNet', modelReady);
+    //predictionImage = createImg("vogel.jpg", imageReady());
+
     //predictionImage.hide();
 
-    background(0);
-    
     //image(predictionImage, 0, 0);
-    mobileNetModel.classify(predictionImage, gotResult);
-    
-
-    
 }
 
 // A function to run when we get any errors and the results

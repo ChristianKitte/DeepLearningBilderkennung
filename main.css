@@ -67,7 +67,8 @@
 
 .drag-image img {
     height: 100%;
-    width: 100%;
+    width: auto;
+    max-height: 300px;
     object-fit: cover;
     border-radius: 5px
 }
