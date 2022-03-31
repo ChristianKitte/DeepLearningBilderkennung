@@ -1,45 +1,60 @@
 const imageClassifierModellName = 'MobileNet';
-
 let imageClassifierModell;
-
-//var image;
 
 function preload() {
     imageClassifierModell = ml5.imageClassifier(imageClassifierModellName);
 }
 
-function predictImage(pathToImage) {
-    //let img = loadImage(pathToImage);
-    let img=document.getElementById('x');
-
-    //let predictionImage = createImg(pathToImage, 'Bild zur Vorhersage');
-    //predictionImage.hide();
-    //image(predictionImage, 0, 0);
-    imageClassifierModell.classify(img, gotResult);
+function predictImage(imgTag) {
+    imageClassifierModell.classify(imgTag, gotResult);
 }
 
+// notwendig !!!
 function setup() {
-    createCanvas(400, 400);
-    background(0);
-
-    //mobileNetModel = ml5.imageClassifier('MobileNet', modelReady);
-    //predictionImage = createImg("vogel.jpg", imageReady());
-
-    //predictionImage.hide();
-
-    //image(predictionImage, 0, 0);
 }
 
 // A function to run when we get any errors and the results
 function gotResult(error, results) {
-    // Display error in the console
+    let outputDiv = document.getElementById('classification');
+    outputDiv.innerHTML = ``;
+
     if (error) {
+        // Display error in the console
+
+        outputDiv.innerHTML += `Leider kam es zu einem Fehler: ${error}<br>`;
         console.error(error);
     } else {
+        outputDiv.innerHTML += `Ergebnis der Klassifizierung:<br>`;
+
+        let labelsName = [];
+        let labelsConfidence = [];
+
         // The results are in an array ordered by confidence.
-        console.log(results);
-        createDiv(`Label: ${results[0].label}`);
-        createDiv(`Confidence: ${nf(results[0].confidence, 0, 2)}`);
+        results.forEach((result) => {
+            outputDiv.innerHTML += `Klasse: ${result.label} - Wahrscheinlichkeit: ${nf(result.confidence * 100, 0, 2)}<br>`;
+            console.log(`Klasse: ${result.label} - Wahrscheinlichkeit: ${nf(result.confidence * 100, 0, 2)}<br>`);
+
+            labelsName.push(result.label);
+            labelsConfidence.push(result.confidence);
+        })
+
+        //https://plotly.com/javascript/pie-charts/
+        //https://karmatnspyphuntsho-tijtech.medium.com/ml5-image-classification-using-mobilenet-and-p5-js-13c64debfd9a
+        //https://github.com/tlsaeger/ml5-workshop-hawhamburg
+        //https://shiffman.net/learning/
+
+        var data = [{
+            values: labelsConfidence,
+            labels: labelsName,
+            type: 'pie'
+        }];
+
+        var layout = {
+            height: 400,
+            width: 500
+        };
+
+        Plotly.newPlot('classificationChart', data, layout);
     }
 }
 

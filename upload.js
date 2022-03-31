@@ -1,20 +1,18 @@
 // Zur Übersichtlichkeit werden die wichtigsten Elemente in Konstanten abgelegt
-const dropArea = document.querySelector(".drag-image"),
-    dragText = dropArea.querySelector("h6"),
-    button = dropArea.querySelector("button"),
-    input = dropArea.querySelector("input");
+const dropArea = document.querySelector(".drag-image"), dragText = dropArea.querySelector("h6"),
+    button = dropArea.querySelector("button"), input = dropArea.querySelector("input");
 
 // Hinweistext zum Dateiupload
 const infotext_readyToDrag = "Datei hierhin ziehen";
 // Hinweistext zum, Drop/Upload der Datei
 const infotext_readyToDrop = "Loslassen, um die Datei hochzuladen";
 // Hinweistext für einen falschen Dateityp
-const infotext_wrongType = "Dies scheint keine Bilddatei zu sein! Gültige Dateien haben die Endung .jpeg, .jpg oder .png";
+const infotext_wrongType = "Dies scheint keine Bilddatei zu sein! Gültige Dateien haben die Endung .jpeg, .jpg, .png oder .bmp";
 
 // Hier wird die jeweils aktive Datei gehalten
 let file;
 // Hier wird die Liste mit den erlaubten Dateien gehalten
-let validExtensions = ["image/jpeg", "image/jpg", "image/png"];
+let validExtensions = ["image/jpeg", "image/jpg", "image/png", "image/bmp"];
 
 // Button Click Event wird auf Input File gelenkt als Ersatz für einen Button
 // vom Typ Submit
@@ -56,17 +54,46 @@ dropArea.addEventListener("drop", (event) => {
 function viewFile() {
     let fileType = file.type;
 
-    if (validExtensions.includes(fileType) || 1==1) {
+    if (validExtensions.includes(fileType)) {
+        /*
+
+        let fileReader = new FileReader();
+
+        fileReader.onload=function(e){
+            var img = document.createElement("img");
+
+            img.onload = function (event) {
+                // Dynamically create a canvas element
+                var canvas = document.createElement("canvas");
+
+                // var canvas = document.getElementById("canvas");
+                var ctx = canvas.getContext("2d");
+
+                // Actual resizing
+                ctx.drawImage(img, 0, 0, 400, 400);
+
+                // Show resized image in preview element
+                var dataurl = canvas.toDataURL(file.type);
+                document.getElementById("curImage").src = dataurl;
+            }
+
+            img.src = e.target.result;
+        }
+
+        fileReader.readAsDataURL(file);
+
+        //https://imagekit.io/blog/how-to-resize-image-in-javascript/
+
+        */
+
         let fileReader = new FileReader();
 
         fileReader.onload = () => {
             let fileURL = fileReader.result;
-            dropArea.innerHTML = `<img id="x" class=".currentImage" src="${fileURL}" alt="Das aktuelle Bild">`;
+            dropArea.innerHTML = `<img id="curImage" class=".currentImage" src="${fileURL}" style="width: 400px; height: 400px;" alt="Das aktuelle Bild">`;
 
-            predictImage('file/vogel.jpg');
-        }
-        fileReader.onloadend = () => {
-            //predictImage('file/vogel.jpg');
+            let img = document.getElementById('curImage');
+            predictImage(img);
         }
 
         fileReader.readAsDataURL(file);
