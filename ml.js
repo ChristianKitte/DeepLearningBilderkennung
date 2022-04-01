@@ -6,7 +6,7 @@ function preload() {
 }
 
 function predictImage(imgTag) {
-    imageClassifierModell.classify(imgTag, gotResult);
+    imageClassifierModell.classify(imgTag, 10, gotResult);
 }
 
 // notwendig !!!
