@@ -15,7 +15,7 @@ function setup() {
 
 // A function to run when we get any errors and the results
 function gotResult(error, results) {
-    let outputDiv = document.getElementById('classification');
+    let outputDiv = document.getElementById('ausgabe-text');
     outputDiv.innerHTML = ``;
 
     if (error) {
@@ -25,18 +25,24 @@ function gotResult(error, results) {
         console.error(error);
     } else {
         outputDiv.innerHTML += `Ergebnis der Klassifizierung:<br>`;
+        outputDiv.innerHTML += `<ul class="list-group list-group-flush">`;
 
         let labelsName = [];
         let labelsConfidence = [];
 
         // The results are in an array ordered by confidence.
         results.forEach((result) => {
-            outputDiv.innerHTML += `Klasse: ${result.label} - Wahrscheinlichkeit: ${nf(result.confidence * 100, 0, 2)}<br>`;
-            console.log(`Klasse: ${result.label} - Wahrscheinlichkeit: ${nf(result.confidence * 100, 0, 2)}<br>`);
+            let newItemText = ["Klasse: ", result.label, " - Wahrscheinlichkeit: ", nf(result.confidence * 100, 0, 2)].join('');
+            outputDiv.innerHTML += `<li class="list-group-item">${newItemText}</li>`;
+
+            //outputDiv.innerHTML += `Klasse: ${result.label} - Wahrscheinlichkeit: ${nf(result.confidence * 100, 0, 2)}<br>`;
+            //console.log(`Klasse: ${result.label} - Wahrscheinlichkeit: ${nf(result.confidence * 100, 0, 2)}<br>`);
 
             labelsName.push(result.label);
             labelsConfidence.push(result.confidence);
         })
+
+        outputDiv.innerHTML += `</ul>`;
 
         //https://plotly.com/javascript/pie-charts/
         //https://karmatnspyphuntsho-tijtech.medium.com/ml5-image-classification-using-mobilenet-and-p5-js-13c64debfd9a
@@ -46,15 +52,20 @@ function gotResult(error, results) {
         var data = [{
             values: labelsConfidence,
             labels: labelsName,
-            type: 'pie'
+            type: 'pie',
+            textinfo: "label+percent",
+            textposition: "outside",
+            automargin: true
         }];
 
         var layout = {
-            height: 400,
-            width: 500
+            height: 500,
+            width: 500,
+            margin: {"t": 0, "b": 0, "l": 0, "r": 0},
+            showlegend: false
         };
 
-        Plotly.newPlot('classificationChart', data, layout);
+        Plotly.newPlot('ausgabe-graph', data, layout);
     }
 }
 

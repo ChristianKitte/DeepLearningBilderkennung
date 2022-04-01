@@ -1,11 +1,16 @@
+// https://bbbootstrap.com/snippets/drag-and-drop-files-preview-area-85841530
+
 // Zur Übersichtlichkeit werden die wichtigsten Elemente in Konstanten abgelegt
-const dropArea = document.querySelector(".drag-image"), dragText = dropArea.querySelector("h6"),
-    button = dropArea.querySelector("button"), input = dropArea.querySelector("input");
+const targetArea = document.querySelector(".target-image"); // ==> Klasse
+const dropArea = document.querySelector(".drag-image"); // ==> Klasse 
+const dragText = dropArea.querySelector(".drag-text"); // ==> Klasse
+const button = dropArea.querySelector("button"); // ==> Button Tag
+const input = dropArea.querySelector("input"); // ==> Button Tag
 
 // Hinweistext zum Dateiupload
-const infotext_readyToDrag = "Datei hierhin ziehen";
+const infotext_readyToDrag = "Ziehen Sie ein Bild in diesen Bereich, um es klassifizieren zu lassen";
 // Hinweistext zum, Drop/Upload der Datei
-const infotext_readyToDrop = "Loslassen, um die Datei hochzuladen";
+const infotext_readyToDrop = "Loslassen, um die Datei zu verwenden";
 // Hinweistext für einen falschen Dateityp
 const infotext_wrongType = "Dies scheint keine Bilddatei zu sein! Gültige Dateien haben die Endung .jpeg, .jpg, .png oder .bmp";
 
@@ -25,6 +30,8 @@ button.onclick = () => {
 input.addEventListener("change", function () {
     file = this.files[0];
     dropArea.classList.add("active");
+
+    // Datei anzeigen (Vorschau)...
     viewFile();
 });
 
@@ -46,6 +53,7 @@ dropArea.addEventListener("dragleave", () => {
 dropArea.addEventListener("drop", (event) => {
     event.preventDefault();
 
+    // die Datei wurd abgelegt ==> verarbeiten !
     file = event.dataTransfer.files[0];
     viewFile();
 });
@@ -55,42 +63,15 @@ function viewFile() {
     let fileType = file.type;
 
     if (validExtensions.includes(fileType)) {
-        /*
-
-        let fileReader = new FileReader();
-
-        fileReader.onload=function(e){
-            var img = document.createElement("img");
-
-            img.onload = function (event) {
-                // Dynamically create a canvas element
-                var canvas = document.createElement("canvas");
-
-                // var canvas = document.getElementById("canvas");
-                var ctx = canvas.getContext("2d");
-
-                // Actual resizing
-                ctx.drawImage(img, 0, 0, 400, 400);
-
-                // Show resized image in preview element
-                var dataurl = canvas.toDataURL(file.type);
-                document.getElementById("curImage").src = dataurl;
-            }
-
-            img.src = e.target.result;
-        }
-
-        fileReader.readAsDataURL(file);
-
-        //https://imagekit.io/blog/how-to-resize-image-in-javascript/
-
-        */
+        // https://imagekit.io/blog/how-to-resize-image-in-javascript/
+        // https://github.com/ml5js/ml5-library/issues/488 Details zur Bildgröße (von 2019)
+        // https://github.com/ml5js/ml5-library
 
         let fileReader = new FileReader();
 
         fileReader.onload = () => {
             let fileURL = fileReader.result;
-            dropArea.innerHTML = `<img id="curImage" class=".currentImage" src="${fileURL}" style="width: 400px; height: 400px;" alt="Das aktuelle Bild">`;
+            targetArea.innerHTML = `<img id="curImage" class="currentImage rounded-2" src="${fileURL}" style="width: 400px; height: 400px;" alt="Das aktuelle Bild">`;
 
             let img = document.getElementById('curImage');
             predictImage(img);
@@ -99,6 +80,7 @@ function viewFile() {
         fileReader.readAsDataURL(file);
     } else {
         alert(infotext_wrongType);
+
         dropArea.classList.remove("active");
         dragText.textContent = infotext_readyToDrag;
     }

@@ -19,7 +19,8 @@
     max-width: 75%;
     background-color: bisque;
     border: 1px dashed #fff;
-'height: fit-content; 'width: fit-content; border-radius: 10 px;
+'height: fit-content; ' width: fit-content;
+    border-radius: 10px;
     font-weight: 400;
     display: flex;
     align-items: center;
@@ -47,30 +48,21 @@
     margin: 10px 0 15px 0
 }
 
-.drag-image button {
-    padding: 10px 25px;
-    font-size: 14px;
-    font-weight: 300;
-    border: none;
-    outline: none;
-    background: transparent;
-    border: 1px solid;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.5s
-}
-
 .drag-image button:hover {
     background-color: #fff;
     color: red
 }
 
-.drag-image img {
+.drag-image {
+    margin: 30px;
+    padding: 30px;
     height: 100%;
-    width: auto;
-    max-height: 300px;
-    object-fit: cover;
-    border-radius: 5px
+    width: 100%;
+    border-radius: 5px;
+}
+
+.target-image {
+    margin: 10px;
 }
 
 .sample-image {
@@ -81,7 +73,7 @@
     margin: 3px;
 }
 
-ul, li
-{
+ul, li {
     list-style: none;
 }
+
