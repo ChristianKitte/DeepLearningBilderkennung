@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="PROJECT" libraries="{@popperjs/core, bootstrap, material, material.indigo-pink, ml5, p5.js, plotly-2.9.0}" />
+    <file url="PROJECT" libraries="{@popperjs/core, bootbox.js, bootstrap, material, material.indigo-pink, ml5, p5.js, plotly-2.9.0}" />
   </component>
 </project>

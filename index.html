@@ -23,7 +23,7 @@
     <script src="https://cdn.plot.ly/plotly-2.9.0.min.js"></script>
 
     <!-- Eigenes CSS und JavaScript -->
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
@@ -40,7 +40,7 @@
 
 <ul class="nav nav-tabs nav-fill">
     <li class="nav-item active">
-        <a class="nav-link" aria-current="page" href="#lösung" data-bs-toggle="tab">
+        <a class="nav-link" href="#lösung" data-bs-toggle="tab" aria-current="page">
             <p class="h2">Lösung</p>
         </a>
     </li>
@@ -52,15 +52,18 @@
 </ul>
 
 <div class="container">
-    <div class="tab-content d-flex justify-content-center">
+    <div class="tab-content justify-content-center d-flex">
         <div class="tab-pane fade show active" id="lösung">
+            <div id="model-status">
+                <p class="fs-5 output-text">Aktuell ist kein Modell geladen!</p>
+            </div>
+
             <div class="bildauswahl justify-content-center">
                 <div class="target-image">
-                    <img class="ml5-logo img-fluid" width="auto" height="10%"
+                    <img class="target-image img-fluid" width="auto" height="10%"
                          src="https://user-images.githubusercontent.com/10605821/41332516-2ee26714-6eac-11e8-83e4-a40b8761e764.png"
                          alt="Das Logo von ml5">
                 </div>
-
                 <div class="drag-image">
                     <p class="fs-5 drag-text">
                         Ziehen Sie ein Bild in diesen Bereich, um es klassifizieren zu lassen
@@ -78,7 +81,7 @@
                 </div>
             </div>
             <div class="beispielbilder">
-                <p class="fs-5">Ziehen Sie ein Bild nach oben, um es Klassifizieren zu lassen</p>
+                <p class="fs-5 output-text">Ziehen Sie ein Bild nach oben, um es Klassifizieren zu lassen</p>
                 <img class="sample-image" src="files/vogel.jpg" alt="Beispielbild">
                 <img class="sample-image" src="files/vogel.jpg" alt="Beispielbild">
                 <img class="sample-image" src="files/vogel.jpg" alt="Beispielbild">
@@ -87,9 +90,9 @@
                 <img class="sample-image" src="files/vogel.jpg" alt="Beispielbild">
             </div>
             <div class="ausgabe">
-                <p class="fs-5">Ergebnis der Klassifizierung</p>
+                <p class="fs-5 output-text">Ergebnis der Klassifizierung</p>
                 <div id="ausgabe-text"></div>
-                <!-- WICHTIG - div muss so notiert werden, da er sonst von Plotly nicht gefunden wird ! -->
+                <!-- WICHTIG - div mu![](../../Users/CHRIST~1/AppData/Local/Temp/vogel.jpg)ss so notiert werden, da er sonst von Plotly nicht gefunden wird ! -->
                 <div id="ausgabe-graph"></div>
             </div>
         </div>
@@ -98,6 +101,7 @@
         </div>
     </div>
 </div>
+
 <!-- Bootstrap JavaScript-->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
         integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
@@ -107,8 +111,9 @@
         crossorigin="anonymous"></script>
 
 <!-- Eigene  JavaScripte -->
-<script src="upload.js"></script>
-<script src="ml.js"></script>
+<script src="scripts/upload.js"></script>
+<script src="scripts/ml.js"></script>
+
 </body>
 
 </html>

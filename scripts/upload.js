@@ -1,13 +1,15 @@
-// https://bbbootstrap.com/snippets/drag-and-drop-files-preview-area-85841530
-
-// Zur Übersichtlichkeit werden die wichtigsten Elemente in Konstanten abgelegt
+// Die Fläche, auf der das zu klassifizierende Bild abgelegt wird
 const targetArea = document.querySelector(".target-image"); // ==> Klasse
-const dropArea = document.querySelector(".drag-image"); // ==> Klasse 
+// Die Fläche, auf der das Bild gezogen wird
+const dropArea = document.querySelector(".drag-image"); // ==> Klasse
+// Der Hinweistext zum Ziehen des Bildes
 const dragText = dropArea.querySelector(".drag-text"); // ==> Klasse
+// Der Button, der den Datei Suchen Dialog öffnet
 const button = dropArea.querySelector("button"); // ==> Button Tag
+// Das HTML Input Feld
 const input = dropArea.querySelector("input"); // ==> Button Tag
 
-// Hinweistext zum Dateiupload
+// Hinweistexte zum Dateiupload
 const infotext_readyToDrag = "Ziehen Sie ein Bild in diesen Bereich, um es klassifizieren zu lassen";
 // Hinweistext zum, Drop/Upload der Datei
 const infotext_readyToDrop = "Loslassen, um die Datei zu verwenden";
@@ -31,29 +33,31 @@ input.addEventListener("change", function () {
     file = this.files[0];
     dropArea.classList.add("active");
 
-    // Datei anzeigen (Vorschau)...
     viewFile();
 });
 
 // Etwas wird über den Drag-and-drop-Bereich gezogen. Prevent default unterdrückt die Defaultbehandlung
 dropArea.addEventListener("dragover", (event) => {
     event.preventDefault();
+
     dropArea.classList.add("active");
     dragText.textContent = infotext_readyToDrop;
 });
 
-// Etwas verlässt den Drag-and-drop-Bereich
+// Etwas verlässt den Drag-and-drop-Bereich. Rücksetzen auf die Default-Anzeige
 dropArea.addEventListener("dragleave", () => {
     dropArea.classList.remove("active");
     dragText.textContent = infotext_readyToDrag;
 });
 
-// Ein vorher aufgenommenes Objekt im Drag-and-drop Bereich losgelassen. Die
-// Variable wurde oben angelegt
+// Ein vorher aufgenommenes Objekt wurde im Drag-and-drop Bereich losgelassen.
 dropArea.addEventListener("drop", (event) => {
     event.preventDefault();
 
-    // die Datei wurd abgelegt ==> verarbeiten !
+    dropArea.classList.remove("active");
+    dragText.textContent = infotext_readyToDrag;
+
+    // die Datei wurde abgelegt ==> verarbeiten !
     file = event.dataTransfer.files[0];
     viewFile();
 });
@@ -63,17 +67,13 @@ function viewFile() {
     let fileType = file.type;
 
     if (validExtensions.includes(fileType)) {
-        // https://imagekit.io/blog/how-to-resize-image-in-javascript/
-        // https://github.com/ml5js/ml5-library/issues/488 Details zur Bildgröße (von 2019)
-        // https://github.com/ml5js/ml5-library
-
         let fileReader = new FileReader();
 
         fileReader.onload = () => {
             let fileURL = fileReader.result;
-            targetArea.innerHTML = `<img id="curImage" class="currentImage rounded-2" src="${fileURL}" style="width: 400px; height: 400px;" alt="Das aktuelle Bild">`;
+            targetArea.innerHTML = `<img id="target" class="target-image img-fluid" src="${fileURL}" alt="Das aktuelle Bild">`;
 
-            let img = document.getElementById('curImage');
+            let img = document.getElementById('target');
             predictImage(img);
         }
 
@@ -85,3 +85,4 @@ function viewFile() {
         dragText.textContent = infotext_readyToDrag;
     }
 }
+
