@@ -16,7 +16,7 @@ function preload() {
 
 // Modell wurde geladen
 function modelLoaded() {
-    modelStatusText.innerHTML = `<p class="fs-5 output-text">${imageClassifierModellName} wurde gelade!</p>`;
+    modelStatusText.innerHTML = `<p class="fs-5 output-text">${imageClassifierModellName} wurde geladen!</p>`;
 }
 
 // Wird einmalig zu Anfang ausgeführt und scheint notwendig zu sein. Ist hier
@@ -35,13 +35,21 @@ function predictImage(imgTag) {
 // Ergebnis Objekt übergeben. Im Erfolgsfall erfolgt die Ausgabe des Ergebnisses
 // als Liste sowie in Form eines Graphen.
 function gotResult(error, results) {
-    let outputDiv = document.getElementById('ausgabe-text');
-    outputDiv.innerHTML = ``;
+    //let outputDiv = document.getElementById('ausgabe-text');
+    //outputDiv.innerHTML = ``;
 
     if (error) {
-        outputDiv.innerHTML += `Leider kam es zu einem Fehler: ${error}<br>`;
+        let outputDiv = document.getElementById('ausgabe-fehlerText');
+        outputDiv.innerHTML = `Leider kam es zu einem Fehler: ${error}<br>`;
+
+        let ausgabeBereich = document.getElementById("ausgabe")
+        ausgabeBereich.classList.add("hidden")
+
+        let ausgabeBereichFehler = document.getElementById("ausgabe-fehler")
+        ausgabeBereichFehler.classList.remove("hidden")
     } else {
-        outputDiv.innerHTML += `<ul id="result-list" class="list-group list-group-flush">`;
+        let outputDiv = document.getElementById('ausgabe-text');
+        outputDiv.innerHTML = `<ul id="result-list" class="list-group list-group-flush">`;
 
         let labelsName = [];
         let labelsConfidence = [];
@@ -62,7 +70,7 @@ function gotResult(error, results) {
             labelsConfidence.push(result.confidence);
         })
 
-        let sonstigesText = ["Sonstiges - Wahrscheinlichkeit: ", nf(sonstiges * 100, 0, 2)].join('');
+        let sonstigesText = ["Nicht klassifizierter Inhalt - Wahrscheinlichkeit: ", nf(sonstiges * 100, 0, 2)].join('');
         outputDiv.innerHTML += `<li class="list-group-item">${sonstigesText}</li>`;
 
         labelsName.push(sonstigesText);
@@ -74,19 +82,19 @@ function gotResult(error, results) {
             values: labelsConfidence,
             labels: labelsName,
             type: 'pie',
-            textinfo: "label+percent",
-            textposition: "outside",
-            automargin: true
         }];
 
         var layout = {
-            height: 500,
-            width: 500,
-            margin: {"t": 0, "b": 0, "l": 0, "r": 0},
             showlegend: false
         };
 
         Plotly.newPlot('ausgabe-graph', data, layout);
+
+        let ausgabeBereich = document.getElementById("ausgabe")
+        ausgabeBereich.classList.remove("hidden")
+
+        let ausgabeBereichFehler = document.getElementById("ausgabe-fehler")
+        ausgabeBereichFehler.classList.add("hidden")
     }
 }
 

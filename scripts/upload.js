@@ -10,7 +10,7 @@ const button = dropArea.querySelector("button"); // ==> Button Tag
 const input = dropArea.querySelector("input"); // ==> Button Tag
 
 // Hinweistexte zum Dateiupload
-const infotext_readyToDrag = "Ziehen Sie ein Bild in diesen Bereich, um es klassifizieren zu lassen";
+const infotext_readyToDrag = "Ziehen Sie ein Bild in die Ablagezone, um es klassifizieren zu lassen!";
 // Hinweistext zum, Drop/Upload der Datei
 const infotext_readyToDrop = "Loslassen, um die Datei zu verwenden";
 // Hinweistext für einen falschen Dateityp
