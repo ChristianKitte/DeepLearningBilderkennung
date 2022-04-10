@@ -63,15 +63,20 @@ function gotResult(error, results) {
 
             sonstiges = sonstiges - result.confidence;
 
-            let newItemText = ["Platz: ", rang, ": ", result.label, " - Wahrscheinlichkeit: ", nf(result.confidence * 100, 0, 2)].join('');
-            outputDiv.innerHTML += `<li class="list-group-item">${newItemText}</li>`;
+            let newItemText = ["Platz: ", rang, ": ", result.label, " - Wahrscheinlichkeit: ", nf(result.confidence * 100, 0, 2), "%"].join('');
+
+            if (rang <= 3) {
+                outputDiv.innerHTML += `<li class="list-group-item list-group-item-primary">${newItemText}</li>`;
+            } else {
+                outputDiv.innerHTML += `<li class="list-group-item list-group-item-info">${newItemText}</li>`;
+            }
 
             labelsName.push(result.label);
             labelsConfidence.push(result.confidence);
         })
 
-        let sonstigesText = ["Nicht klassifizierter Inhalt - Wahrscheinlichkeit: ", nf(sonstiges * 100, 0, 2)].join('');
-        outputDiv.innerHTML += `<li class="list-group-item">${sonstigesText}</li>`;
+        let sonstigesText = ["Nicht klassifizierter Inhalt - Wahrscheinlichkeit: ", nf(sonstiges * 100, 0, 2), "%"].join('');
+        outputDiv.innerHTML += `<li class="list-group-item list-group-item-light">${sonstigesText}</li>`;
 
         labelsName.push(sonstigesText);
         labelsConfidence.push(sonstiges);

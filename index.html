@@ -27,95 +27,131 @@
 </head>
 
 <body>
-
-<nav class="navbar navbar-light bg-light">
-    <div class="container-fluid">
-        <span class="navbar-brand mb-0 h1">Modul Deep Learning - SS 2022</span>
-    </div>
-    <div class="container-fluid">
-        <p class="fs-5">Einsendeaufgabe EA1 des Modul Deep Learning im Masterstudiengang Medieninformatik Online an der
-            HS
-            Emden-Leer</p>
-        <p class="fs-5">Aufgabe war die Erstellung einer Webanwendung zur Klassifizierung beliebiger Bilder auf
-            Basis der offenen JavaScript Bibliothek ml5.js. Im Rahmen dieser Umsetzung kam MobileNet als vortrainiertes
-            Modell zum Einsatz.</p>
-    </div>
-</nav>
-
-<ul class="nav nav-tabs nav-fill">
-    <li class="nav-item active">
-        <a class="nav-link" href="#lösung" data-bs-toggle="tab" aria-current="page">
-            <p class="h2">Lösung</p>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#dokumentation" data-bs-toggle="tab">
-            <p class="h2">Dokumentation</p>
-        </a>
-    </li>
-</ul>
-
 <div class="container">
+    <!-- Seitenheader -->
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">Modul Deep Learning - SS 2022</span>
+        </div>
+        <div class="container-fluid">
+            <p class="fs-5">Einsendeaufgabe EA1 des Modul Deep Learning im Masterstudiengang Medieninformatik Online an
+                der
+                HS
+                Emden-Leer</p>
+            <p class="fs-5">Aufgabe war die Erstellung einer Webanwendung zur Klassifizierung beliebiger Bilder auf
+                Basis der offenen JavaScript Bibliothek ml5.js. Im Rahmen dieser Umsetzung kam MobileNet als
+                vortrainiertes
+                Modell zum Einsatz.</p>
+        </div>
+    </nav>
+
+    <!-- Bootsrap Nav -->
+    <ul class="nav nav-tabs nav-fill">
+        <li class="nav-item active">
+            <a class="nav-link" href="#lösung" data-bs-toggle="tab" aria-current="page">
+                <p class="h2">Lösung</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#dokumentation" data-bs-toggle="tab">
+                <p class="h2">Dokumentation</p>
+            </a>
+        </li>
+    </ul>
+
+    <!-- Content -->
     <div class="tab-content justify-content-center d-flex">
+        <!-- Lösung -->
         <div class="tab-pane fade show active" id="lösung">
-            <div id="model-status">
-                <p class="fs-5 output-text">Lade MobileNet...</p>
-            </div>
-
-            <div id="info-text">
-                <p class="fs-5 output-text">Nachdem das Netz geladen worden ist, können beliebige Bilder mit der Maus
-                    in die unten befindliche Ablagezone gezogen werden, um sie zu klassifizieren. Unten befinden sich
-                    bereits sechs Beispielbilder, welche ebenfalls durch Ziehen in die Ablagezone klassifiziert
-                    werden.
-                </p>
-            </div>
-
-            <div class="bildauswahl justify-content-center">
-                <div class="target-image">
-                    <img class="target-image img-fluid" width="auto" height="10%"
-                         src="https://user-images.githubusercontent.com/10605821/41332516-2ee26714-6eac-11e8-83e4-a40b8761e764.png"
-                         alt="Das Logo von ml5">
+            <div class="row">
+                <div id="model-status">
+                    <p class="fs-5 output-text">Lade MobileNet...</p>
                 </div>
-                <div class="drag-image">
-                    <p class="fs-5 drag-text">
-                        Ziehen Sie ein Bild in die Ablagezone, um es klassifizieren zu lassen!
+
+                <div id="info-text">
+                    <p class="fs-5 output-text">Nachdem das Netz geladen worden ist, können beliebige Bilder mit der
+                        Maus
+                        in die unten befindliche Ablagezone gezogen werden, um sie zu klassifizieren. Unten befinden
+                        sich
+                        bereits sechs Beispielbilder, welche ebenfalls durch Ziehen in die Ablagezone klassifiziert
+                        werden.
                     </p>
-
-                    <p class="fs-5">
-                        Es werden JPEG (*.jpg, *.jpeg), PNG (*.png) oder Bitmap (*.bmp) unterstützt.
-                    </p>
-
-                    <button type="button" class="btn btn-outline-primary">
-                        Hier drücken um eine Datei zu suchen
-                    </button>
-
-                    <input id="targetFile" type="file" hidden>
                 </div>
             </div>
-            <div class="beispielbilder">
-                <p class="fs-5 output-text">Ziehen Sie ein Bild nach oben, um es Klassifizieren zu lassen</p>
-                <img class="sample-image" src="files/vogel.jpg" alt="Beispielbild">
-                <img class="sample-image" src="files/vogel.jpg" alt="Beispielbild">
-                <img class="sample-image" src="files/vogel.jpg" alt="Beispielbild">
-                <img class="sample-image" src="files/vogel.jpg" alt="Beispielbild">
-                <img class="sample-image" src="files/vogel.jpg" alt="Beispielbild">
-                <img class="sample-image" src="files/vogel.jpg" alt="Beispielbild">
-            </div>
-            <div id="ausgabe" class="hidden">
-                <p class="fs-5 output-text">Ergebnis der Klassifizierung</p>
-                <div id="ausgabe-text"></div>
-                <!-- WICHTIG - div muss so notiert werden, da er sonst von Plotly nicht gefunden wird ! -->
-                <div id="ausgabe-graphText">
-                    <p class="fs-5"> Bewegen sie die Maus über das interaktive Diagramm für weitere Informationen.</p>
+            <div class="row">
+                <div class="col">
+                    <div class="row">
+                        <div class="target-image">
+                            <img class="target-image" width="auto" height="auto"
+                                 src="https://user-images.githubusercontent.com/10605821/41332516-2ee26714-6eac-11e8-83e4-a40b8761e764.png"
+                                 alt="Das Logo von ml5">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div id="ausgabe" class="hidden">
+                            <p class="fs-5 output-text">Ergebnis der Klassifizierung</p>
+                            <div id="ausgabe-text"></div>
+                            <!-- WICHTIG - div muss so notiert werden, da er sonst von Plotly nicht gefunden wird ! -->
+                            <div id="ausgabe-graphText">
+                                <p class="fs-5"> Bewegen sie die Maus über das interaktive Diagramm für weitere
+                                    Informationen.</p>
+                            </div>
+                            <div id="ausgabe-graph"></div>
+                        </div>
+                        <div id="ausgabe-fehler" class="hidden">
+                            <p id="ausgabe-fehlerText" class="fs-5 output-text">Ergebnis der Klassifizierung</p>
+                        </div>
+                    </div>
                 </div>
-                <div id="ausgabe-graph"></div>
-            </div>
-            <div id="ausgabe-fehler" class="hidden">
-                <p id="ausgabe-fehlerText" class="fs-5 output-text">Ergebnis der Klassifizierung</p>
+                <div class="col">
+                    <div class="row">
+                        <div class="drag-image">
+                            <p class="fs-5 drag-text">
+                                Ziehen Sie ein Bild in die Ablagezone, um es klassifizieren zu lassen!
+                            </p>
+
+                            <p class="fs-5">
+                                Es werden JPEG (*.jpg, *.jpeg), PNG (*.png) oder Bitmap (*.bmp) unterstützt.
+                            </p>
+
+                            <button type="button" class="btn btn-outline-primary">
+                                Hier drücken um eine Datei zu suchen
+                            </button>
+
+                            <input id="targetFile" type="file" hidden>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="beispielbilder">
+                            <p class="fs-5 output-text">Ziehen Sie ein Bild nach oben, um es Klassifizieren zu
+                                lassen</p>
+                            <img class="sample-image" src="files/vogel.jpg" alt="Beispielbild">
+                            <img class="sample-image" src="files/vogel.jpg" alt="Beispielbild">
+                            <img class="sample-image" src="files/vogel.jpg" alt="Beispielbild">
+                            <img class="sample-image" src="files/vogel.jpg" alt="Beispielbild">
+                            <img class="sample-image" src="files/vogel.jpg" alt="Beispielbild">
+                            <img class="sample-image" src="files/vogel.jpg" alt="Beispielbild">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+
+        <!-- Dokumentation -->
         <div class="tab-pane fade show" id="dokumentation">
-            <p>Die Dokumentation</p>
+            <h6>
+                Technische Aspekte
+            </h6>
+            <p class="dokutext">
+                Hier steht die technische Doku....
+            </p>
+
+            <h6>
+                Fachliche Aspekte
+            </h6>
+            <p class="dokutext">
+                Hier steht die fachliche Doku....
+            </p>
         </div>
     </div>
 </div>
@@ -128,7 +164,7 @@
         integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
         crossorigin="anonymous"></script>
 
-<!-- Eigene  JavaScripte -->
+<!-- Eigene JavaScripte -->
 <script src="scripts/upload.js"></script>
 <script src="scripts/ml.js"></script>
 
