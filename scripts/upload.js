@@ -14,12 +14,12 @@ const infotext_readyToDrag = "Ziehen Sie ein Bild in die Ablagezone, um es klass
 // Hinweistext zum, Drop/Upload der Datei
 const infotext_readyToDrop = "Loslassen, um die Datei zu verwenden";
 // Hinweistext für einen falschen Dateityp
-const infotext_wrongType = "Dies scheint keine Bilddatei zu sein! Gültige Dateien haben die Endung .jpeg, .jpg, .png oder .bmp";
+const infotext_wrongType = "Dies scheint keine Bilddatei zu sein! Gültige Dateien haben die Endung .jpeg, .jpg, .png, .bmp oder .webp";
 
 // Hier wird die jeweils aktive Datei gehalten
 let file;
 // Hier wird die Liste mit den erlaubten Dateien gehalten
-let validExtensions = ["image/jpeg", "image/jpg", "image/png", "image/bmp"];
+let validExtensions = ["image/jpeg", "image/jpg", "image/png", "image/bmp", "image/webp"];
 
 // Button Click Event wird auf Input File gelenkt als Ersatz für einen Button
 // vom Typ Submit
