@@ -81,3 +81,11 @@ img.target-image {
 .dokutext {
     margin-left: 10px;
 }
+
+.unloaded-net {
+    color: red;
+}
+
+.loaded-net {
+    color: green;
+}

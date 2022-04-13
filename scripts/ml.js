@@ -16,7 +16,7 @@ function preload() {
 
 // Modell wurde geladen
 function modelLoaded() {
-    modelStatusText.innerHTML = `<p class="fs-5 output-text">${imageClassifierModellName} wurde geladen!</p>`;
+    modelStatusText.innerHTML = `<p class="fs-5 output-text loaded-net">${imageClassifierModellName} wurde geladen!</p>`;
 }
 
 // Wird einmalig zu Anfang ausgeführt und scheint notwendig zu sein. Ist hier
