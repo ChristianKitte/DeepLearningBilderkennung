@@ -150,18 +150,194 @@
 
         <!-- Dokumentation -->
         <div class="tab-pane fade show" id="dokumentation">
-            <h6>
-                Technische Aspekte
-            </h6>
-            <p class="dokutext">
-                Hier steht die technische Doku....
+            <h5>
+                <strong>
+                    Verwendete Frameworks und Sprachen
+                </strong>
+            </h5>
+
+            <ul>
+                <li>
+                    <h6>
+                        <a href="https://de.wikipedia.org/wiki/Hypertext_Markup_Language" target="_blank">HTML 5</a>
+                    </h6>
+                    <p class="fs-6">
+                        HTML (Hypertext Markup Language) ist eine Hypertext Auszeichnungssprache. Texte können mit
+                        ihr ausgezeichnet (gegliedert und formatiert) und verknüpft werden.
+                    </p>
+                </li>
+                <li>
+                    <h6>
+                        <a href="https://de.wikipedia.org/wiki/Cascading_Style_Sheets" target="_blank">CSS 3 (seit 2000,
+                            Living Standard)</a>
+                    </h6>
+                    <p class="fs-6">
+                        Bei CSS (Cascading Style Sheet) handelt es sich um eine Formatierungssprache für
+                        HTML, SVG und XML Dokumente. Sie ermöglicht es, das Design und Layout einfach vom
+                        eigentlichen Dokument zu trennen.
+                    </p>
+                </li>
+                <li>
+                    <h6>
+                        <a href="https://de.wikipedia.org/wiki/JavaScript" target="_blank">Java Script 1.8.5 (ECMA
+                            Skript 5, Living Standard)</a>
+                    </h6>
+                    <p class="fs-6">
+                        Bei Java Script handelt es sich um eine im Browser ausführbare Skriptsprache. Sie
+                        ermöglicht es, Webseiten interaktiv zu gestalten, ohne auf serverseitig vorgehaltene
+                        Funktionalität zurückgreifen zu müssen. Da sie im Browser ausführbar ist, kann hierbei
+                        auf eine Installation verzichtet werden.
+                    </p>
+                </li>
+                <li>
+                    <h6>
+                        <a href="https://getbootstrap.com/" target="_blank">Bootstrap 5</a>
+                    </h6>
+                    <p class="fs-6">
+                        Bootstrap ist ein auf HTML und CSS basierendes Frontend CSS Framework für Webseiten. Dem
+                        entsprechend fokussiert es sich auf das Design und Layout einer Seite und ihrer
+                        Oberflächenelemente.
+                    </p>
+                </li>
+                <li>
+                    <h6>
+                        <a href="https://learn.ml5js.org/" target="_blank">ml5</a>
+                    </h6>
+                    <p class="fs-6">
+                        Ml5 ist ein auf Tensorflow.js aufbauendes Framework im Umfeld von maschinellen Lernen und
+                        KI. Tensorflow.js bietet einen JavaScript basierten Zugang zu Googles Tensorflow, einem
+                        Framework für künstliche Intelligenz und maschinelles Lernen. Ziel von ml5 ist hierbei,
+                        den Zugang durch eine starke Abstraktion zu vereinfachen und im Web verfügbar zu machen.
+                    </p>
+                </li>
+                <li>
+                    <h6>
+                        <a href="https://plotly.com/javascript/" target="_blank">Plotly</a>
+                    </h6>
+                    <p class="fs-6">
+                        Plotly ist eine verbreitete Grafikbibliothek, mit Schnittstellen für verschiedene Sprachen
+                        wie Python, R oder Java Script. In dieser Lösung wird Plotly als leichtgewichtige Lösung zum
+                        Erstellen von Tortengrafiken verwendet.
+                    </p>
+                </li>
+            </ul>
+
+            <h5>
+                <strong>
+                    Umsetzung
+                </strong>
+            </h5>
+            <p class="fs-6">
+                Die hier vorgestellte Anwendung ermöglicht die Klassifizierung von Bildern mithilfe eines neuronalen
+                Netzes. Als Modell kommt hierbei MobilNet als vortrainiertes Netz zum Einsatz. Die Verwendung des
+                Frameworks ml5 vereinfacht die Umsetzung erheblich. Ml5 basiert und nutzt intern Tensorflow.js,
+                welches wiederum eine Abtraktion von Googles Tensor Flow darstellt. Zielsetzung ist es, die Themen
+                maschinelles Lernen und Künstliche Intelligenz einfach und im Netz verfügbar zu machen. Hierfür
+                setzt es auf Java Script und eine hohe Abstraktionsstufe. Weiter wird im starken Maße auf Promisses
+                zurückgegriffen, was die Programmierung angenehm einfach gestaltet. Die Nutzung des Frameworks
+                und die Ausgabe erfolgt in fünf Schritten:
             </p>
 
             <h6>
-                Fachliche Aspekte
+                <strong>
+                    Schritt 1: Laden des Netzes
+                </strong>
             </h6>
-            <p class="dokutext">
-                Hier steht die fachliche Doku....
+
+            <p class="fs-6">
+                Im ersten Schritt wird bei Aufruf und Aufbau der Seite das später genutzte MobilNet mit Funktionen
+                von ml5 geladen. Der Erfolg oder Misserfolg wird textlich auf der Hauptseite angezeigt. Mit dem Laden
+                des Netzes sind alle Vorbereitungen abgeschlossen.
+            </p>
+
+            <h6>
+                <strong>
+                    Schritt 2: Bildauswahl:
+                </strong>
+            </h6>
+
+            <p class="fs-6">
+                Im zweiten Schritt wird das zu klassifizierende Bild ausgewählt. Dies geschieht entweder mithilfe
+                eines Dateidialoges, oder aber per drag and drop. Die zweite Option ermöglicht das einfache Verwenden
+                von Bildern direkt aus dem Internet.
+            </p>
+
+            <h6>
+                <strong>
+                    Schritt 3: Prüfen des Dateiformates:
+                </strong>
+            </h6>
+
+            <p class="fs-6">
+                Nach der Auswahl oder dem Ablegen eines Bildes erfolgt im dritten Schritt sofort die weitere
+                Verarbeitung. Hierfür wird als erstes anhand der Dateiendung geprüft, ob es sich um gültiges Format
+                handelt. Gültige Formate sind:
+            </p>
+
+            <ul>
+                <li>JPEG (*.jpg, *.jpeg)</li>
+                <li>Bitmap (*.bmp)</li>
+                <li>Portable Network Graphics (*.png)</li>
+                <li><a href="https://developers.google.com/speed/webp" target="_blank">WebP</a> Dateien (*.webp)</li>
+            </ul>
+
+            <p>
+                Bei ungültigen Dateien wird ein Hinweis als Meldung angezeigt und die Verarbeitung im Folgenden
+                abgebrochen.
+            </p>
+
+            <h6>
+                <strong>
+                    Schritt 4: Klassifizierung
+                </strong>
+            </h6>
+
+            <p class="fs-6">
+                Für gültige Dateien wird im DOM der Image Tag des Zielbildes ausgetauscht, und dieser Tag als Parameter
+                der Funktion zur Klassifizierung übergeben. Hierbei wird der hohe Abstraktionsgrad von ml5 genutzt, der
+                es ermöglicht, neben Bilder auch Verweise zu verwenden. Siehe hierzu die
+                <a href="https://learn.ml5js.org/#/reference/image-classifier" target="_blank">Referenz</a>
+            </p>
+
+            <p class="fs-6">
+                Eine Vorverarbeitung des Bildes ist bei Verwendung von ml5 in der Kombination mit Mobile Net nicht
+                notwendig. Ml5 übernimmt alle Vorverarbeitungen an dem übergebenen Bild. Dies geschieht mit der
+                Intention, den Zugang möglichst einfach zu gestalten.
+            </p>
+
+            <h6>
+                <strong>
+                    Schritt 5: Ausgabe, Visualisierung und Interpretation
+                </strong>
+            </h6>
+
+            <p class="fs-6">
+                Nach Abschluss der Klassifizierung durch ml5 wird der übergebene Callback aufgerufen. Hierbei werden
+                wie im Aufruf zuvor festgelegt nur die fünf wahrscheinlichsten Klassifizierung in einer farblich
+                unterlegten Liste zurückgegeben. Zudem wird mit Hilfe der Bibliothek Plotly ein Tortendiagramm erstellt.
+            </p>
+
+            <p class="fs-6">
+                Jede Klassifizierung hat eine gewisse Wahrscheinlichkeit. Diese wird als Prozent mit ausgegeben. Weiter
+                muss gesehen werden, dass nur die fünf wahrscheinlichsten Klassifizierungen zurück gegeben werden, deren
+                Wahrscheinlichkeiten in Summe nicht 100% ergeben.</p>
+
+            <p class="fs-6">
+                Ein Möglichkei für ein visuelles Feedback wäre es, die fünf gefundenen Klassen mit der höchsten
+                Wahrscheinlichkeit in ihrer Gesamtheit als 100% zu sehen. Eine Tortendiagramm würde hier Zeigen, wie
+                stark die fünf Klassen untereinander im Vergleich sind. Dies könnte leicht den falschen Eindruck
+                erwecken, als wenn in Summe die Klassifizierung zu 100% erfolgreich sei. Dies wäre aber falsch.
+            </p>
+
+            <p class="fs-6">
+                Daher wird eine zusätzliche Gruppe mit anfänglichen 100% gebildet, von der die Werte der fünf
+                wahrscheinlichsten Qualifizierungen abgezogen werden. Diese Gruppe bildet die restlichen Möglichkeiten
+                inklusive der praktisch nicht zu klassifizierenden Bilder.
+            </p>
+
+            <p class="fs-6">
+                Hierdurch wird durch das Tortendiagramm die zusätzliche Information darüber vermittelt, wie unsicher
+                das Netz bei der Klassifizierung war.
             </p>
         </div>
     </div>
