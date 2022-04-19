@@ -75,7 +75,7 @@ function gotResult(error, results) {
             labelsConfidence.push(result.confidence);
         })
 
-        let sonstigesText = ["Nicht klassifizierter Inhalt - Wahrscheinlichkeit: ", nf(sonstiges * 100, 0, 2), "%"].join('');
+        let sonstigesText = ["Keiner der genannten Klassen - Wahrscheinlichkeit: ", nf(sonstiges * 100, 0, 2), "%"].join('');
         outputDiv.innerHTML += `<li class="list-group-item list-group-item-light">${sonstigesText}</li>`;
 
         labelsName.push(sonstigesText);

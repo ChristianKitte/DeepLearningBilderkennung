@@ -31,17 +31,15 @@
     <!-- Seitenheader -->
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
-            <span class="navbar-brand mb-0 h1">Modul Deep Learning - SS 2022</span>
+            <span class="navbar-brand mb-0 h1">Modul Deep Learning - SS 2022 HS Emden-Leer</span>
         </div>
         <div class="container-fluid">
-            <p class="fs-5">Einsendeaufgabe EA1 des Modul Deep Learning im Masterstudiengang Medieninformatik Online an
-                der
-                HS
-                Emden-Leer</p>
-            <p class="fs-5">Aufgabe war die Erstellung einer Webanwendung zur Klassifizierung beliebiger Bilder auf
-                Basis der offenen JavaScript Bibliothek ml5.js. Im Rahmen dieser Umsetzung kam MobileNet als
-                vortrainiertes
-                Modell zum Einsatz.</p>
+            <p class="fs-5">Einsendeaufgabe EA1 : Erstellung einer Webanwendung zur Klassifizierung von Bildern auf
+                Basis der JavaScript Bibliothek ml5.js.<br>
+                <a href="https://github.com/ChristianKitte/DeepLearningBilderkennung" target="_blank">
+                    <em>Der Sourcecode ist bei GitHub einsehbar</em>
+                </a>
+            </p>
         </div>
     </nav>
 
@@ -65,16 +63,13 @@
         <div class="tab-pane fade show active" id="lösung">
             <div class="row">
                 <div id="model-status">
-                    <p class="fs-5 output-text unloaded-net">Lade MobileNet...</p>
+                    <p class="fs-5 output-text unloaded-net">Lade MobileNet... Bitte warten Sie... </p>
                 </div>
 
                 <div id="info-text">
-                    <p class="fs-5 output-text">Nachdem das Netz geladen worden ist, können beliebige Bilder mit der
-                        Maus
-                        in die unten befindliche Ablagezone gezogen werden, um sie zu klassifizieren. Unten befinden
-                        sich
-                        bereits sechs Beispielbilder, welche ebenfalls durch Ziehen in die Ablagezone klassifiziert
-                        werden.
+                    <p class="fs-5 output-text">Nachdem das Netz geladen worden ist, können Bilder per drag and drop auf
+                        die grüne Ablagefläche gezogen werden, um sie zu klassifizieren. Die acht Beispielbilder sind
+                        Beispiele für gute und weniger gute Klassifikationen.
                     </p>
                 </div>
             </div>
@@ -93,7 +88,7 @@
                             <div id="ausgabe-text"></div>
                             <!-- WICHTIG - div muss so notiert werden, da er sonst von Plotly nicht gefunden wird ! -->
                             <div id="ausgabe-graphText">
-                                <p class="fs-5"> Bewegen sie die Maus über das interaktive Diagramm für weitere
+                                <p class="fs-5"> Bewegen sie die Maus über das Diagramm für weitere
                                     Informationen.</p>
                             </div>
                             <div id="ausgabe-graph"></div>
@@ -168,25 +163,23 @@
                 </li>
                 <li>
                     <h6>
-                        <a href="https://de.wikipedia.org/wiki/Cascading_Style_Sheets" target="_blank">CSS 3 (seit 2000,
-                            Living Standard)</a>
+                        <a href="https://de.wikipedia.org/wiki/Cascading_Style_Sheets" target="_blank">CSS 3</a>
                     </h6>
                     <p class="fs-6">
                         Bei CSS (Cascading Style Sheet) handelt es sich um eine Formatierungssprache für
-                        HTML, SVG und XML Dokumente. Sie ermöglicht es, das Design und Layout einfach vom
-                        eigentlichen Dokument zu trennen.
+                        HTML, SVG und XML Dokumente. Sie ermöglicht die einfache Trennung von Inhalt, Design und Layout.
                     </p>
                 </li>
                 <li>
                     <h6>
-                        <a href="https://de.wikipedia.org/wiki/JavaScript" target="_blank">Java Script 1.8.5 (ECMA
+                        <a href="https://de.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript 1.8.5 (ECMA
                             Skript 5, Living Standard)</a>
                     </h6>
                     <p class="fs-6">
-                        Bei Java Script handelt es sich um eine im Browser ausführbare Skriptsprache. Sie
-                        ermöglicht es, Webseiten interaktiv zu gestalten, ohne auf serverseitig vorgehaltene
-                        Funktionalität zurückgreifen zu müssen. Da sie im Browser ausführbar ist, kann hierbei
-                        auf eine Installation verzichtet werden.
+                        Bei JavaScript handelt es sich um eine im Browser ausführbare Skriptsprache. Sie
+                        ermöglicht es unter anderen, Webseiten interaktiv zu gestalten, ohne auf serverseitig
+                        vorgehaltene Funktionalität zurückgreifen zu müssen. Da sie im Browser ausführbar ist,
+                        kann auf eine Installation verzichtet werden.
                     </p>
                 </li>
                 <li>
@@ -195,7 +188,7 @@
                     </h6>
                     <p class="fs-6">
                         Bootstrap ist ein auf HTML und CSS basierendes Frontend CSS Framework für Webseiten. Dem
-                        entsprechend fokussiert es sich auf das Design und Layout einer Seite und ihrer
+                        entsprechend fokussiert es auf das Design und Layout einer Seite sowie ihrer
                         Oberflächenelemente.
                     </p>
                 </li>
@@ -204,10 +197,14 @@
                         <a href="https://learn.ml5js.org/" target="_blank">ml5</a>
                     </h6>
                     <p class="fs-6">
-                        Ml5 ist ein auf Tensorflow.js aufbauendes Framework im Umfeld von maschinellen Lernen und
-                        KI. Tensorflow.js bietet einen JavaScript basierten Zugang zu Googles Tensorflow, einem
-                        Framework für künstliche Intelligenz und maschinelles Lernen. Ziel von ml5 ist hierbei,
-                        den Zugang durch eine starke Abstraktion zu vereinfachen und im Web verfügbar zu machen.
+                        Ml5 ist ein auf
+                        <a href="https://www.tensorflow.org/js" target="_blank">Tensorflow.js</a>
+                        aufbauendes Framework im Umfeld von maschinellen Lernen und
+                        KI. Ziel von ml5 ist hierbei, den Zugang durch eine starke Abstraktion zu vereinfachen
+                        und im Web verfügbar zu machen. In dieser Webanwendung wird es für die Bildklassifizierung
+                        mit
+                        <a href="https://arxiv.org/abs/1704.04861" target="_blank">MobileNet</a>
+                        genutzt. Das vortrainierte Modell ist ebenfalls über ml5 verfügbar.
                     </p>
                 </li>
                 <li>
@@ -215,8 +212,8 @@
                         <a href="https://plotly.com/javascript/" target="_blank">Plotly</a>
                     </h6>
                     <p class="fs-6">
-                        Plotly ist eine verbreitete Grafikbibliothek, mit Schnittstellen für verschiedene Sprachen
-                        wie Python, R oder Java Script. In dieser Lösung wird Plotly als leichtgewichtige Lösung zum
+                        Plotly ist eine verbreitete Grafikbibliothek mit Schnittstellen zu verschiedenen Sprachen
+                        wie Python, R oder JavaScript. In dieser Lösung wird Plotly als leichtgewichtige Lösung zum
                         Erstellen von Tortengrafiken verwendet.
                     </p>
                 </li>
@@ -229,13 +226,10 @@
             </h5>
             <p class="fs-6">
                 Die hier vorgestellte Anwendung ermöglicht die Klassifizierung von Bildern mithilfe eines neuronalen
-                Netzes. Als Modell kommt hierbei MobilNet als vortrainiertes Netz zum Einsatz. Die Verwendung des
-                Frameworks ml5 vereinfacht die Umsetzung erheblich. Ml5 basiert und nutzt intern Tensorflow.js,
-                welches wiederum eine Abtraktion von Googles Tensor Flow darstellt. Zielsetzung ist es, die Themen
-                maschinelles Lernen und Künstliche Intelligenz einfach und im Netz verfügbar zu machen. Hierfür
-                setzt es auf Java Script und eine hohe Abstraktionsstufe. Weiter wird im starken Maße auf Promisses
-                zurückgegriffen, was die Programmierung angenehm einfach gestaltet. Die Nutzung des Frameworks
-                und die Ausgabe erfolgt in fünf Schritten:
+                Netzes. Die Lösung basiert auf drei von ml5 angebotene Funktionlität zur Bilderkennung. Als Modell
+                wird hierzu aus den von ml5 angebotenen Netzen MobilNet ausgewählt. Es handelt sich hierbei um ein
+                vortrainiertes Netz, das direkt eingesetzt werden kann. Die Nutzung des Frameworks und die Ausgabe
+                erfolgt in fünf Schritten:
             </p>
 
             <h6>
@@ -245,8 +239,8 @@
             </h6>
 
             <p class="fs-6">
-                Im ersten Schritt wird bei Aufruf und Aufbau der Seite das später genutzte MobilNet mit Funktionen
-                von ml5 geladen. Der Erfolg oder Misserfolg wird textlich auf der Hauptseite angezeigt. Mit dem Laden
+                Im ersten Schritt wird bei Aufruf und Aufbau der Seite das später genutzte MobilNet mit Hilfe von
+                ml5 geladen. Der Erfolg oder Misserfolg wird textlich auf der Hauptseite angezeigt. Mit dem Laden
                 des Netzes sind alle Vorbereitungen abgeschlossen.
             </p>
 
@@ -269,9 +263,9 @@
             </h6>
 
             <p class="fs-6">
-                Nach der Auswahl oder dem Ablegen eines Bildes erfolgt im dritten Schritt sofort die weitere
-                Verarbeitung. Hierfür wird als erstes anhand der Dateiendung geprüft, ob es sich um gültiges Format
-                handelt. Gültige Formate sind:
+                Nach dem Ablegen eines Bildes erfolgt im dritten Schritt sofort die weitere Verarbeitung. Hierfür
+                wird als erstes anhand der Dateiendung geprüft, ob es sich um gültiges Format handelt. Gültige
+                Formate sind:
             </p>
 
             <ul>
@@ -282,8 +276,7 @@
             </ul>
 
             <p>
-                Bei ungültigen Dateien wird ein Hinweis als Meldung angezeigt und die Verarbeitung im Folgenden
-                abgebrochen.
+                Bei ungültigen Dateien wird ein Hinweis als Meldung angezeigt und die Verarbeitung abgebrochen.
             </p>
 
             <h6>
@@ -294,9 +287,10 @@
 
             <p class="fs-6">
                 Für gültige Dateien wird im DOM der Image Tag des Zielbildes ausgetauscht, und dieser Tag als Parameter
-                der Funktion zur Klassifizierung übergeben. Hierbei wird der hohe Abstraktionsgrad von ml5 genutzt, der
-                es ermöglicht, neben Bilder auch Verweise zu verwenden. Siehe hierzu die
-                <a href="https://learn.ml5js.org/#/reference/image-classifier" target="_blank">Referenz</a>
+                der Funktion <em>predictImage</em> zur Klassifizierung übergeben. Hierbei wird der hohe
+                Abstraktionsgrad von ml5 genutzt, der es ermöglicht, neben Bilder auch Verweise zu verwenden. Siehe
+                hierzu die
+                <a href="https://learn.ml5js.org/#/reference/image-classifier" target="_blank">Referenz</a>.
             </p>
 
             <p class="fs-6">
@@ -312,26 +306,27 @@
             </h6>
 
             <p class="fs-6">
-                Nach Abschluss der Klassifizierung durch ml5 wird der übergebene Callback aufgerufen. Hierbei werden
-                wie im Aufruf zuvor festgelegt nur die fünf wahrscheinlichsten Klassifizierung in einer farblich
-                unterlegten Liste zurückgegeben. Zudem wird mit Hilfe der Bibliothek Plotly ein Tortendiagramm erstellt.
+                Nach Abschluss der Klassifizierung durch ml5 wird der übergebene Callback <em>gotResult</em>
+                aufgerufen. Hierbei werden - wie im Aufruf zuvor festgelegt - nur die fünf wahrscheinlichsten
+                Klassifizierungen zurückgegeben und in einer farblich unterlegten Liste dargestellt. Zudem
+                wird mit Hilfe der Bibliothek Plotly ein Tortendiagramm erstellt.
             </p>
 
             <p class="fs-6">
-                Jede Klassifizierung hat eine gewisse Wahrscheinlichkeit. Diese wird als Prozent mit ausgegeben. Weiter
-                muss gesehen werden, dass nur die fünf wahrscheinlichsten Klassifizierungen zurück gegeben werden, deren
-                Wahrscheinlichkeiten in Summe nicht 100% ergeben.</p>
+                Jede Klassifizierung hat eine gewisse Wahrscheinlichkeit. Diese wird als Prozent mit ausgegeben. Es
+                muss berücksichtigt werden, dass nur die fünf wahrscheinlichsten Klassifizierungen zurückgegeben
+                werden, deren Wahrscheinlichkeiten in Summe jedoch nicht 100% ergeben.</p>
 
             <p class="fs-6">
-                Ein Möglichkei für ein visuelles Feedback wäre es, die fünf gefundenen Klassen mit der höchsten
-                Wahrscheinlichkeit in ihrer Gesamtheit als 100% zu sehen. Eine Tortendiagramm würde hier Zeigen, wie
-                stark die fünf Klassen untereinander im Vergleich sind. Dies könnte leicht den falschen Eindruck
-                erwecken, als wenn in Summe die Klassifizierung zu 100% erfolgreich sei. Dies wäre aber falsch.
+                Eine Möglichkeit für ein visuelles Feedback wäre, die fünf gefundenen Klassen mit der höchsten
+                Wahrscheinlichkeit in ihrer Gesamtheit als 100% zu sehen. Eine Tortendiagramm würde in diesem Fall
+                zeigen, wie stark die fünf Klassen untereinander im Vergleich sind. Dies könnte leicht den falschen
+                Eindruck erwecken, als wenn die Klassifizierung selbst zu 100% sicher sei. Dies wäre aber falsch.
             </p>
 
             <p class="fs-6">
                 Daher wird eine zusätzliche Gruppe mit anfänglichen 100% gebildet, von der die Werte der fünf
-                wahrscheinlichsten Qualifizierungen abgezogen werden. Diese Gruppe bildet die restlichen Möglichkeiten
+                wahrscheinlichsten Klassen abgezogen werden. Diese Gruppe bildet die restlichen Möglichkeiten
                 inklusive der praktisch nicht zu klassifizierenden Bilder.
             </p>
 
