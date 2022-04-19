@@ -62,7 +62,7 @@ dropArea.addEventListener("drop", (event) => {
     viewFile();
 });
 
-// Kontrolle, ob der Dateityp korrekt ist. ValidExtension wird oben definiert
+// Kontrolle, ob der Dateityp korrekt ist. ValidExtensions werden oben definiert
 function viewFile() {
     let fileType = file.type;
 
